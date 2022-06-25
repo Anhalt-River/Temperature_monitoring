@@ -16,6 +16,24 @@ namespace Temperature_monitoring
         {
             InitializeComponent();
         }
+
+        private void butProcess_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] MaxTemp = new string[2];
+                MaxTemp[0] = textBoxMaxTemp.Text;
+                MaxTemp[1] = textBoxTimeMax.Text;
+
+                string[] MinTemp = new string[2];
+                MinTemp[0] = textBoxMinTemp.Text;
+                MinTemp[1] = textBoxMinTime.Text;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
     }
 
 }

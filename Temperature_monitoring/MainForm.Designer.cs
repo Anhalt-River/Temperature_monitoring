@@ -30,6 +30,8 @@ namespace Temperature_monitoring
         private void InitializeComponent()
         {
             this.panInsert = new System.Windows.Forms.Panel();
+            this.butOpenFile = new System.Windows.Forms.Button();
+            this.textBoxTempList = new System.Windows.Forms.TextBox();
             this.labText8 = new System.Windows.Forms.Label();
             this.panUnit7 = new System.Windows.Forms.Panel();
             this.textBoxTimeStartcv = new System.Windows.Forms.TextBox();
@@ -57,8 +59,7 @@ namespace Temperature_monitoring
             this.labTitle2 = new System.Windows.Forms.Label();
             this.openFFDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFFDialog = new System.Windows.Forms.SaveFileDialog();
-            this.textBoxTempList = new System.Windows.Forms.TextBox();
-            this.butOpenFile = new System.Windows.Forms.Button();
+            this.butProcess = new System.Windows.Forms.Button();
             this.panInsert.SuspendLayout();
             this.panUnit7.SuspendLayout();
             this.panUnit5.SuspendLayout();
@@ -72,6 +73,7 @@ namespace Temperature_monitoring
             // 
             // panInsert
             // 
+            this.panInsert.Controls.Add(this.butProcess);
             this.panInsert.Controls.Add(this.butOpenFile);
             this.panInsert.Controls.Add(this.textBoxTempList);
             this.panInsert.Controls.Add(this.labText8);
@@ -88,6 +90,25 @@ namespace Temperature_monitoring
             this.panInsert.Name = "panInsert";
             this.panInsert.Size = new System.Drawing.Size(388, 450);
             this.panInsert.TabIndex = 0;
+            // 
+            // butOpenFile
+            // 
+            this.butOpenFile.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.butOpenFile.Location = new System.Drawing.Point(6, 416);
+            this.butOpenFile.Name = "butOpenFile";
+            this.butOpenFile.Size = new System.Drawing.Size(192, 31);
+            this.butOpenFile.TabIndex = 15;
+            this.butOpenFile.Text = "Загрузить файл";
+            this.butOpenFile.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTempList
+            // 
+            this.textBoxTempList.Location = new System.Drawing.Point(6, 340);
+            this.textBoxTempList.Multiline = true;
+            this.textBoxTempList.Name = "textBoxTempList";
+            this.textBoxTempList.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBoxTempList.Size = new System.Drawing.Size(372, 70);
+            this.textBoxTempList.TabIndex = 14;
             // 
             // labText8
             // 
@@ -339,24 +360,16 @@ namespace Temperature_monitoring
             // 
             this.openFFDialog.FileName = "openFileDialog1";
             // 
-            // textBoxTempList
+            // butProcess
             // 
-            this.textBoxTempList.Location = new System.Drawing.Point(6, 340);
-            this.textBoxTempList.Multiline = true;
-            this.textBoxTempList.Name = "textBoxTempList";
-            this.textBoxTempList.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBoxTempList.Size = new System.Drawing.Size(372, 70);
-            this.textBoxTempList.TabIndex = 14;
-            // 
-            // butOpenFile
-            // 
-            this.butOpenFile.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.butOpenFile.Location = new System.Drawing.Point(88, 416);
-            this.butOpenFile.Name = "butOpenFile";
-            this.butOpenFile.Size = new System.Drawing.Size(192, 31);
-            this.butOpenFile.TabIndex = 15;
-            this.butOpenFile.Text = "Загрузить файл";
-            this.butOpenFile.UseVisualStyleBackColor = true;
+            this.butProcess.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.butProcess.Location = new System.Drawing.Point(221, 416);
+            this.butProcess.Name = "butProcess";
+            this.butProcess.Size = new System.Drawing.Size(157, 31);
+            this.butProcess.TabIndex = 16;
+            this.butProcess.Text = "Обработать данные";
+            this.butProcess.UseVisualStyleBackColor = true;
+            this.butProcess.Click += new System.EventHandler(this.butProcess_Click);
             // 
             // MainForm
             // 
@@ -421,6 +434,7 @@ namespace Temperature_monitoring
         private System.Windows.Forms.Panel panUnit1;
         private System.Windows.Forms.TextBox textBoxTempList;
         private System.Windows.Forms.Button butOpenFile;
+        private System.Windows.Forms.Button butProcess;
     }
 }
 

@@ -4,12 +4,9 @@ namespace Temperature_monitoring
 {
     public class ProcessingInput
     {
-        public string Recycle(string[] maxTemp, string[] minTemp, string[] rowDateTime, string rowTempList)
+        public string[] Recycle(string[] maxTemp, string[] minTemp, string rowDate, string rowTime, string rowTempList)
         {
             string report = "";
-
-            string rowDate = rowDateTime[0];
-            string rowTime = rowDateTime[1];
 
             string[] date_string = rowDate.Split('.');
             int[] date_int = new int[date_string.Length];
@@ -54,7 +51,9 @@ namespace Temperature_monitoring
                 haveMin = false;
             }
 
-
+            int maxCounter = 0;
+            int minCounter = 0;
+            bool min_sensor = false; bool max_sensor = false;
             foreach (string temper in tempList)
             {
                 int t = Convert.ToInt32(temper);
@@ -74,6 +73,7 @@ namespace Temperature_monitoring
                     int difference = Math.Abs(t - max);
                     report += ("|" + temper + "|" + ($"{max}") + "|" + $"{difference}");
                     report += "/";
+                    maxCounter = maxCounter + 10;
                 }
                 else if (t < min)
                 {
@@ -81,10 +81,40 @@ namespace Temperature_monitoring
                     int difference = Math.Abs(t - min);
                     report += ("|" + temper + "|" + ($"{min}") + "|" + $"{difference}");
                     report += "/";
+                    minCounter = minCounter + 10;
+                    min_sensor = true;
                 }
                 minuts += 10;
             }
-            return report;
+
+            if (maxCounter > maxTime)
+            {
+                max_sensor = true;
+            }
+            if (minCounter > minTime)
+            {
+                min_sensor = true;
+            }
+
+
+            string[] unit_report = new string[4];
+            unit_report[0] = report;
+            unit_report[1] = Convert.ToString(maxCounter);
+            unit_report[2] = Convert.ToString(minCounter);
+            if (max_sensor == true)
+            {
+                unit_report[3] = "Max";
+            }
+            else if (min_sensor == true)
+            {
+                unit_report[3] = "Min";
+            }
+            else if (max_sensor == true && min_sensor == true)
+            {
+                unit_report[3] = "MaxMin";
+            }
+            
+            return unit_report;
         }
 
         private string WorkingOfDateTime(int minuts)
